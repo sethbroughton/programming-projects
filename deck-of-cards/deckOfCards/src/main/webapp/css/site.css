@@ -32,10 +32,6 @@
   font-weight: bold;
 }
 
-.show {
-	background-color: white;
-}
-
-.hide {
-	background-color: black;
+.hidden {
+	background-color: red;
 }
