@@ -12,7 +12,7 @@
 					<c:url var="imgCard" value="/img/${card.suit}.PNG"/>
 					<img src="${imgCard}" />
 			</div>
-			<div class="content">
+			<div class="content is-size-1">
 				${card.value}
 			</div>
 		</div>
