@@ -34,8 +34,9 @@ public class CardDAO {
 	public List<Card> shuffle(){
 		Random randomNumber = new Random();
 		List<Card> deck = listAllCards();
-		System.out.println(deck.size());
+		
 		int sizeOfDeck = deck.size();
+		
 		for(int i = sizeOfDeck-1; i>=1; i--) {
 		//random number generator from 0 to i;
 			int swapIndex = randomNumber.nextInt(i);	
@@ -46,8 +47,7 @@ public class CardDAO {
 			deck.set(swapIndex, temp);
 		}
 		
-		return deck;
-		
+		return deck;	
 	}
 	
 }

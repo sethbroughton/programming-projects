@@ -30,6 +30,12 @@
 
   font-size: 1.1rem;
   font-weight: bold;
+}
 
- 
+.show {
+	background-color: white;
+}
+
+.hide {
+	background-color: black;
 }
