@@ -2,6 +2,7 @@ package com.techelevator.deckOfCards;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.stereotype.Component;
 
@@ -31,8 +32,21 @@ public class CardDAO {
 	}
 	
 	public List<Card> shuffle(){
+		Random randomNumber = new Random();
+		List<Card> deck = listAllCards();
+		System.out.println(deck.size());
+		int sizeOfDeck = deck.size();
+		for(int i = sizeOfDeck-1; i>=1; i--) {
+		//random number generator from 0 to i;
+			int swapIndex = randomNumber.nextInt(i);	
 		
-		return listAllCards();
+		//Swap cards
+			Card temp = deck.get(i);
+			deck.set(i, deck.get(swapIndex));
+			deck.set(swapIndex, temp);
+		}
+		
+		return deck;
 		
 	}
 	
