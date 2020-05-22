@@ -4,11 +4,11 @@
 	   
 	</c:import>
 
-	<h1>Hello, <c:out value="${param.name}" />!</h1>
-
+	<a href="shuffle" class="button">Shuffle Deck</a>
+	<div id="grid" class="main-content">
 	<c:forEach var="card" items="${cardList}">
-		<div class="card" style="width:50px">
-			<div class="card-image">
+		<div class="card">
+			<div class="cardImg">
 					<c:url var="imgCard" value="/img/${card.suit}.PNG"/>
 					<img src="${imgCard}" />
 			</div>
@@ -17,6 +17,7 @@
 			</div>
 		</div>
 	</c:forEach>
+	</div>
 		
 		
 </html>

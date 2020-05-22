@@ -3,9 +3,16 @@ package com.techelevator.deckOfCards;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CardDAO {
+import org.springframework.stereotype.Component;
 
-	public static List<Card> listAllCards() {
+@Component
+public class CardDAO {
+	
+	public CardDAO(){
+		
+	}
+
+	public List<Card> listAllCards() {
 		
 		List<Card> myDeck = new ArrayList<>();
 		String[] suits = new String[] {"Hearts","Spades","Diamonds","Clubs"};
@@ -13,12 +20,20 @@ public class CardDAO {
 		
 		for(String suit : suits) {
 			for(String value : values) {
-				myDeck.add(new Card(suit, value));
+				Card myCard = new Card();
+				myCard.setSuit(suit);
+				myCard.setValue(value);
+				myDeck.add(myCard);
 			}
 		}
 		
 		return myDeck;
 	}
 	
+	public List<Card> shuffle(){
+		
+		return listAllCards();
+		
+	}
 	
 }
