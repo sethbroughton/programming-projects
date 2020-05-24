@@ -1,6 +1,6 @@
 {
-    "name": "IMDb Lookup",
-    "description": "Display IMDb rating from context menu and on rotten tomatoes",
+    "name": "Stock Quote Lookup",
+    "description": "Display stock quote in an browser alert",
     "version": "0.1",
     "manifest_version": 2,
     "background": {
@@ -12,8 +12,8 @@
     "permissions": ["contextMenus"],
     "content_scripts": [{
         "matches": [
-          "https://www.rottentomatoes.com/*"
+          "https://finance.yahoo.com/*"
         ],
         "js": ["content.js"]
-      }]
+      }]    
   }
