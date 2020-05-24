@@ -1,12 +1,17 @@
 package com.techelevator;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
 	
 	private String userName;
-	private List<String> messages;
+	private List<String> messages = new ArrayList<>();
 	private List<User> following;
+	
+	User() {
+		
+	}
 	
 	public String getUserName() {
 		return userName;
@@ -33,7 +38,7 @@ public class User {
 	}
 	
 	public void addMessage(String message) {
-		messages.add("hey");
+		messages.add(message);
 	}
 	
 	public void followUser(User User) {
