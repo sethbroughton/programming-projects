@@ -6,8 +6,8 @@ import java.util.List;
 public class User {
 	
 	private String userName;
-	private List<String> messages = new ArrayList<>();
-	private List<User> following;
+	private List<Message> messages = new ArrayList<>();
+	private List<User> following = new ArrayList<>();
 	
 	User() {
 		
@@ -21,11 +21,11 @@ public class User {
 		this.userName = userName;
 	}
 	
-	public List<String> getMessages() {
+	public List<Message> getMessages() {
 		return messages;
 	}
 	
-	public void setMessages(List<String> messages) {
+	public void setMessages(List<Message> messages) {
 		this.messages = messages;
 	}
 	
@@ -37,12 +37,14 @@ public class User {
 		this.following = following;
 	}
 	
-	public void addMessage(String message) {
+	public void addMessage(Message message) {
 		messages.add(message);
 	}
 	
-	public void followUser(User User) {
-		following.add(User);
+	public void followUser(User user) {
+		following.add(user);
 	}
+
 	
+
 }
