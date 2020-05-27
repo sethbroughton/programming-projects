@@ -1,6 +1,8 @@
 package com.techelevator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class User {
@@ -44,7 +46,18 @@ public class User {
 	public void followUser(User user) {
 		following.add(user);
 	}
-
 	
+	public List<Message> createWall(){
+		List<User> followers = getFollowing();
+		List<Message> allMessages = getMessages();
+		
+		for(User follower : followers) {
+			for(Message message : follower.getMessages()) {
+				allMessages.add(message);
+			}
+		}
+		Collections.sort(allMessages);
+		return allMessages;
+	}
 
 }

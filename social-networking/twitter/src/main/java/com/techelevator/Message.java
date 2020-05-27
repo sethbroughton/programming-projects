@@ -4,11 +4,12 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.Period;
 
-public class Message {
+public class Message implements Comparable<Message>{
 	
 	private String stringMessage;
 	private LocalDateTime timeStamp;
 	private String elapsedTime;
+	private User userPosted;
 	
 	public Message(){
 		this.timeStamp = LocalDateTime.now();
@@ -75,11 +76,20 @@ public class Message {
 	@Override
 	public String toString() {
 		return this.stringMessage + " (" + getElapsedTime() + ")";
-		
 	}
 
-	
-	
+	@Override
+	public int compareTo(Message message) {
+		return message.timeStamp.compareTo(this.timeStamp);
+	}
+
+	public User getUserPosted() {
+		return userPosted;
+	}
+
+	public void setUserPosted(User user) {
+		this.userPosted = user;
+	}
 	
 
 }

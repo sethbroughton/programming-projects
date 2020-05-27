@@ -27,13 +27,18 @@ public class TwitterProgram {
 				function = inputs[1];
 			}
 			
-			if(inputs.length>2) {
-				for(int i = 2; i<inputs.length; i++) {
+			if(inputs.length>2){
+				if(!function.equals("follows")){
+					for(int i = 2; i<inputs.length; i++) {
 					argument = argument + " " + inputs[i];
+					}
+				} else {
+					argument = inputs[2];
 				}
 			}
-			
+	
 			User currentUser = returnUser(userName);
+			
 			if(function!=null) {
 				executeFunction(currentUser, function, argument);
 			} else {
@@ -49,6 +54,7 @@ public class TwitterProgram {
 		if(function.equals("->")) {
 			Message newMessage = new Message();
 			newMessage.setStringMessage(arguments);
+			newMessage.setUserPosted(user);
 			user.addMessage(newMessage);
 		} else if(function.equals("follows")) {
 			if(userList.containsKey(arguments)) {
@@ -57,6 +63,8 @@ public class TwitterProgram {
 			} else {
 				System.out.println("Username "+ "\""+ arguments + "\"" + " does not exist");
 			}
+		} else if(function.equals("wall")) {
+			printWall(user);
 		}
 	}
 	
@@ -73,15 +81,12 @@ public class TwitterProgram {
 		return currentUser;
 	}
 	
-	private void printActiveUsers() {
-		for(Map.Entry<String, User> user : userList.entrySet()) {
-			System.out.print(user.getKey());
-		}
-	}
-	
 	private void printWall(User currentUser) {
 		//create a list of messages with userNames and timeStamps
-		
+		List<Message> wallMessages = currentUser.createWall();
+		for(Message message : wallMessages) {
+			System.out.println("\t"+ message.getUserPosted().getUserName() + " - " + message);
+		}
 	}
 
 }
