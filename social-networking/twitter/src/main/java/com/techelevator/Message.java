@@ -40,37 +40,27 @@ public class Message implements Comparable<Message>{
 		long seconds = duration.getSeconds();
 		
 		if(days>0) {
-			if(days==1) {
-				elapsedTime = "1 day ago";
-			} else {
-				elapsedTime = days + " days ago";
-			}
-		}
-		else if(hours>0) {
-			if(hours==1) {
-				elapsedTime = "1 hour ago";
-			} else {
-				elapsedTime = hours + " hours ago";
-			}
+			return days==1 ? "1 day ago" : days + " days ago";
+		} else if(hours>0) {
+			return hours==1 ? "1 hour ago" : hours + " hours ago";
 		} else if(minutes>0) {
-			if(minutes==1) {
-				elapsedTime = "1 minute ago";
-			} else {
-				elapsedTime = minutes + " minutes ago";
-			}
+			return minutes==1 ? "1 minute ago" : minutes + " minutes ago";
 		} else {
-			if(seconds<=1) {
-				elapsedTime = "1 second ago";
-			} else {
-				elapsedTime =  seconds + " seconds ago";
-			}
-			
+			return seconds==1 ? "1 second ago" : seconds + " seconds ago";
 		}
-		return elapsedTime;
+		
 	}
 
 	public void setElapsedTime(String elapsedTime) {
 		this.elapsedTime = elapsedTime;
+	}
+
+	public User getUserPosted() {
+		return userPosted;
+	}
+
+	public void setUserPosted(User user) {
+		this.userPosted = user;
 	}
 	
 	@Override
@@ -81,14 +71,6 @@ public class Message implements Comparable<Message>{
 	@Override
 	public int compareTo(Message message) {
 		return message.timeStamp.compareTo(this.timeStamp);
-	}
-
-	public User getUserPosted() {
-		return userPosted;
-	}
-
-	public void setUserPosted(User user) {
-		this.userPosted = user;
 	}
 	
 

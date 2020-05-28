@@ -1,5 +1,6 @@
 package com.techelevator;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,9 +30,10 @@ public class TwitterProgram {
 			
 			if(inputs.length>2){
 				if(!function.equals("follows")){
-					for(int i = 2; i<inputs.length; i++) {
-					argument = argument + " " + inputs[i];
-					}
+					Arrays.stream(inputs).reduce((word, myStr)->word+" " +myStr);
+//					for(int i = 2; i<inputs.length; i++) {
+//					argument = argument + " " + inputs[i];
+//					}
 				} else {
 					argument = inputs[2];
 				}
@@ -82,7 +84,7 @@ public class TwitterProgram {
 	}
 	
 	private void printWall(User currentUser) {
-		//create a list of messages with userNames and timeStamps
+	
 		List<Message> wallMessages = currentUser.createWall();
 		for(Message message : wallMessages) {
 			System.out.println("\t"+ message.getUserPosted().getUserName() + " - " + message);
