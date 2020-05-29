@@ -30,10 +30,10 @@ public class TwitterProgram {
 			
 			if(inputs.length>2){
 				if(!function.equals("follows")){
-					Arrays.stream(inputs).reduce((word, myStr)->word+" " +myStr);
-//					for(int i = 2; i<inputs.length; i++) {
-//					argument = argument + " " + inputs[i];
-//					}
+
+					for(int i = 2; i<inputs.length; i++) {
+					argument = argument + " " + inputs[i];
+					}
 				} else {
 					argument = inputs[2];
 				}
@@ -52,6 +52,8 @@ public class TwitterProgram {
 
 	}
 	
+
+	
 	private void executeFunction(User user, String function, String arguments) {
 		if(function.equals("->")) {
 			Message newMessage = new Message();
@@ -67,7 +69,15 @@ public class TwitterProgram {
 			}
 		} else if(function.equals("wall")) {
 			printWall(user);
-		}
+		} 
+	}
+	
+	private void helpUser() {
+		System.out.println("Post a Message: type <user-name> -> <message>");
+		System.out.println("Read a User's Timeline: type <user-name>");
+		System.out.println("Following another User: type <user-name> follows <another-user>");
+		System.out.println("View that user's list of aggregated messages, their wall, type <user-name> wall");
+		
 	}
 	
 	private User returnUser(String userName) {

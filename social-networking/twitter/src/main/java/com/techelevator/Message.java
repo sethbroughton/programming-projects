@@ -70,6 +70,7 @@ public class Message implements Comparable<Message>{
 
 	@Override
 	public int compareTo(Message message) {
+		
 		return message.timeStamp.compareTo(this.timeStamp);
 	}
 	
